@@ -3,6 +3,7 @@ class gitolite::params {
   $password         = 'undef'
   $user             = "gitolite"
   $homedir          = "/var/gitolite"
+  $system_user      = true
   $source           = "http://github.com/sitaramc/gitolite.git"
   $version          = "v3.1"
   $packages         = true

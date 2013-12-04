@@ -30,7 +30,7 @@
 #
 #   Installs packages to satisfy requirements (optional)
 #   Creates source directory (/usr/src/gitolite) and checks out Gitolite repo
-#   Creates gitolite management user (local system user, optional)
+#   Creates gitolite management user (local user, default as a system user, optional)
 #   Runs gitolite/install
 #   Runs gitolite <public key>
 #
@@ -54,6 +54,7 @@ class gitolite (
   $password        = $gitolite::params::password,
   $user            = $gitolite::params::user,
   $homedir         = $gitolite::params::homedir,
+  $system_user     = $gitolite::params::system_user,
   $source          = $gitolite::params::source,
   $version         = $gitolite::params::version,
   $packages        = $gitolite::params::packages,
@@ -127,7 +128,7 @@ class gitolite (
         gid      => $gitolite::user,
         home     => $gitolite::homedir,
         password => $gitolite::password,
-        system   => true;
+        system   => $gitolite::system_user;
     }
 
     file {
